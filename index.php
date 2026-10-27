@@ -83,6 +83,10 @@ input:focus{
 	transform:scale(1.06);
 	box-shadow:0 0 12px white;
 }
+.submit{
+	color:white;
+	background-color:green;
+}
 
 /* Animações */
 @keyframes entrada{
@@ -114,7 +118,8 @@ input:focus{
 			
 			<input type="text" name="usuario" required placeholder="seu nome de usuário aqui!"> <br><br>
 			<label>Senha:</label>
-			<input type="text" name="usuario" required placeholder="Digite sua Senha">
+			<input type="text" name="usuario" required placeholder="Digite sua Senha"><br><br>
+			<input type="submit" class="submit">
 		
 		</form>
 		</div>
