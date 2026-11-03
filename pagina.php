@@ -14,3 +14,10 @@ if(!isset($_SESSION["usuario"])){
 <title>Página protegida</title>
 </head>
 <body>
+	<h1>Bem vindo!</h1>
+
+	<p>Olá, <?= htmlspecialchars($_session["usuario"])?>!</p>
+	<p>Você acessou a página protegida por sessão</p>
+	<a href="sair.php">Sair do sistema</a>
+</body>
+</html>
