@@ -5,8 +5,8 @@ session_start();
 $mensagem = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$usuario = $POST["usuario"];
-	$senha = $POST["usuario"];
+	$usuario = $POST=["usuario"];
+	$senha = $POST=["senha"];
 	
 	if($usuario == "aluno" && $senha == "1234") {
 		session_regenerate_id(true);
@@ -118,7 +118,7 @@ input:focus{
 			
 			<input type="text" name="usuario" required placeholder="seu nome de usuário aqui!"> <br><br>
 			<label>Senha:</label>
-			<input type="text" name="usuario" required placeholder="Digite sua Senha"><br><br>
+			<input type="password" name="senha" required placeholder="Digite sua Senha"><br><br>
 			<input type="submit" class="submit">
 		
 		</form>
