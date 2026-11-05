@@ -141,4 +141,5 @@ session_start();
 			const pontos = mouse.x === null ? particulas : particulas.concat([mouse]);
 			for (let i = 0; i < pontos.length; i++) {
 				for (let j = i + 1; j < pontos.length; j++) {
-					const dx = pontos[i].x - pontos[j].x;
+					const dx = pontos[i].x - pontos[j].x;}}}
+</script>

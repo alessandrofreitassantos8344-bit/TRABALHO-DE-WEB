@@ -5,18 +5,19 @@ session_start();
 $mensagem = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$usuario = $POST=["usuario"];
-	$senha = $POST=["senha"];
+	$usuario = $_POST["usuario"];
+	$senha = $_POST["senha"];
 	
 	if($usuario == "aluno" && $senha == "1234") {
 		session_regenerate_id(true);
 		
-		$SESSION["usuario"] = $usuario;
+		$_SESSION["usuario"] = $usuario;
 		
-		header("Location: pagina.php");
+		header("Location:pagina.php");
 		exit;
 	} else {
 	$mensagem = "usuário ou senha Incorretos!";
+        echo $usuario. " " .$senha;
 	}
 }
 	
