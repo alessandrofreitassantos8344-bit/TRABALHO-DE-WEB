@@ -23,176 +23,248 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-	<head>
-	
-		<meta charset="UTF-8">
-		
-		<title>Login</title>
-		
-		<style>
-		
-			body{
-	color:white;
-	background: radial-gradient(circle,rgba(0, 0, 0, 1) 0%, rgba(92, 92, 92, 1) 100%);
-	background-size:200% 200%;
-	animation: fundo 10s ease-in-out infinite;
-}
-.form{
-	background-color:#B5B5B5;
-	text-align:center;
-	border-radius:15px;
-	font-family:cursive;
-	width:400px;
-	height:350px;
-	padding-top:100px;
-	margin-left:750px;
-	margin-top:50px;
-	box-shadow: 0px 0px 50px -4px white;
-	animation:
-		entrada 0.9s ease-out backwards,
-		brilho 4s ease-in-out 1s infinite;
-}
-h2{
-	animation: subir 0.8s ease-out 0.3s backwards;
-}
-label{
-	display:inline-block;
-	animation: subir 0.8s ease-out backwards;
-}
-label:nth-of-type(1){ animation-delay:0.5s; }
-label:nth-of-type(2){ animation-delay:0.8s; }
+<head>
 
-input{
-	background-color:gray;
-	border-radius:5px;
-	border:1px solid white;
-	color:white;
-	font-family:cursive;
-	transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-	animation: subir 0.8s ease-out backwards;
-}
-input:nth-of-type(1){ animation-delay:0.6s; }
-input:nth-of-type(2){ animation-delay:0.9s; }
-input:hover{
-	background-color:#777;
-	transform:scale(1.06);
-}
-input:focus{
-	outline:none;
-	transform:scale(1.06);
-	box-shadow:0 0 12px white;
-}
-.submit{
-	color:white;
-	background-color:green;
-}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-/* Animações */
-@keyframes entrada{
-	from{ opacity:0; transform:translateY(-60px) scale(0.9); }
-	to{ opacity:1; transform:translateY(0) scale(1); }
-}
-@keyframes subir{
-	from{ opacity:0; transform:translateY(20px); }
-	to{ opacity:1; transform:translateY(0); }
-}
-@keyframes brilho{
-	0%, 100%{ box-shadow:0px 0px 50px -4px white; }
-	50%{ box-shadow:0px 0px 75px 2px white; }
-}
-@keyframes fundo{
-	0%, 100%{ background-position:50% 50%; }
-	50%{ background-position:20% 80%; }
-}
-		</style>
-	
-	</head>
-	<body>
-		<div class="form">
-		<h2>Bem-Vindo(a) ao Login!</h2>
-		
+	<title>Login</title>
+
+	<style>
+
+		@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+		*{ box-sizing:border-box; }
+
+		body{
+			margin:0;
+			min-height:100vh;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			padding:40px 20px;
+			font-family:'Press Start 2P', 'Courier New', monospace;
+			font-size:12px;
+			line-height:1.7;
+			color:#404040;
+			background:
+				linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+				url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9c9e740d-df91-4221-be13-b37fb394f7f4/d4ywq8d-e1806567-312f-4e26-a769-147436e0a4c6.png/v1/fill/w_900,h_900,q_80,strp/ipad_wallpaper_mc_dirt_by_xseanx123_d4ywq8d-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6Ii9mLzljOWU3NDBkLWRmOTEtNDIyMS1iZTEzLWIzN2ZiMzk0ZjdmNC9kNHl3cThkLWUxODA2NTY3LTMxMmYtNGUyNi1hNzY5LTE0NzQzNmUwYTRjNi5wbmciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.gZ0K_9PTV3Ivftfz1FBOGHSs0NLSWyfgqc07-NCw5w8"),
+				url("fundo.png");
+			background-size:auto, 450px 450px, 450px 450px;
+			image-rendering:pixelated;
+		}
+
+		.painel{
+			position:relative;
+			width:100%;
+			max-width:460px;
+			padding:32px 28px 28px;
+			background:#C6C6C6;
+			border:2px solid #000;
+			box-shadow:
+				inset 3px 3px 0 #FFFFFF,
+				inset -3px -3px 0 #555555,
+				6px 6px 0 rgba(0,0,0,0.5);
+		}
+
+		.splash{
+			position:absolute;
+			top:-18px;
+			right:-22px;
+			color:#FFFF00;
+			font-size:11px;
+			text-shadow:2px 2px 0 #3F3F00;
+			white-space:nowrap;
+			transform:rotate(-18deg);
+			animation:pulsar 0.9s ease-in-out infinite alternate;
+			pointer-events:none;
+		}
+
+		h1, h2{
+			margin:0 0 8px;
+			font-size:18px;
+			font-weight:normal;
+			color:#404040;
+			text-shadow:2px 2px 0 #FFFFFF;
+		}
+
+		.subtitulo{
+			margin:0 0 22px;
+			padding-bottom:16px;
+			border-bottom:2px solid #8B8B8B;
+			font-size:10px;
+			color:#555555;
+		}
+
+		.campo{ margin-bottom:18px; }
+
+		label{
+			display:block;
+			margin-bottom:8px;
+			font-size:11px;
+			color:#404040;
+		}
+
+		input[type="text"],
+		input[type="password"]{
+			width:100%;
+			padding:12px 10px;
+			font-family:inherit;
+			font-size:11px;
+			color:#E0E0E0;
+			background:#000000;
+			border:2px solid #A0A0A0;
+			border-radius:0;
+		}
+
+		input[type="text"]::placeholder,
+		input[type="password"]::placeholder{
+			color:#707070;
+		}
+
+		input[type="text"]:focus,
+		input[type="password"]:focus{
+			outline:none;
+			border-color:#FFFFFF;
+		}
+
+		.botao{
+			display:block;
+			width:100%;
+			margin-top:8px;
+			padding:14px 12px;
+			font-family:inherit;
+			font-size:12px;
+			text-align:center;
+			text-decoration:none;
+			color:#E0E0E0;
+			text-shadow:2px 2px 0 #3F3F3F;
+			background:#8B8B8B;
+			border:2px solid #000;
+			border-radius:0;
+			box-shadow:
+				inset 3px 3px 0 rgba(255,255,255,0.45),
+				inset -3px -3px 0 rgba(0,0,0,0.45);
+			cursor:pointer;
+		}
+
+		.botao:hover{
+			color:#FFFFA0;
+			background:#7B83C4;
+		}
+
+		.botao:active{
+			box-shadow:
+				inset 3px 3px 0 rgba(0,0,0,0.45),
+				inset -3px -3px 0 rgba(255,255,255,0.35);
+		}
+
+		.botao:focus-visible{
+			outline:2px solid #FFFFFF;
+			outline-offset:2px;
+		}
+
+		.saudacao{
+			margin:0 0 14px;
+			font-size:13px;
+			color:#404040;
+			word-break:break-word;
+		}
+
+		.texto{
+			margin:0 0 24px;
+			font-size:10px;
+			color:#555555;
+		}
+
+		@keyframes pulsar{
+			from{ transform:rotate(-18deg) scale(1); }
+			to{ transform:rotate(-18deg) scale(1.12); }
+		}
+
+		@media (max-width:520px){
+			.painel{ padding:28px 18px 22px; }
+			.splash{ right:-6px; }
+		}
+
+		@media (prefers-reduced-motion:reduce){
+			.splash{ animation:none; }
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div class="painel">
+
+		<span class="splash" id="splash">Bem-vindo(a)!</span>
+
+		<h2>Acesso ao sistema</h2>
+		<p class="subtitulo">Informe suas credenciais para continuar.</p>
+
 		<form method="POST">
-		
-			<label>Usuário:</label>
-			
-			<input type="text" name="usuario" required placeholder="seu nome de usuário aqui!"> <br><br>
-			<label>Senha:</label>
-			<input type="password" name="senha" required placeholder="Digite sua Senha"><br><br>
-			<input type="submit" class="submit">
-		
+
+			<div class="campo">
+				<label for="usuario">Usuário</label>
+				<input type="text" id="usuario" name="usuario" required autocomplete="username" placeholder="Digite seu usuário">
+			</div>
+
+			<div class="campo">
+				<label for="senha">Senha</label>
+				<input type="password" id="senha" name="senha" required autocomplete="current-password" placeholder="Digite sua senha">
+			</div>
+
+			<input type="submit" class="botao" value="Entrar">
+
 		</form>
-		</div>
-	</body>
-<script>
-(function () {
-	const canvas = document.createElement("canvas");
-	canvas.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;";
-	document.body.appendChild(canvas);
-	const ctx = canvas.getContext("2d");
 
-	let w, h;
-	const mouse = { x: null, y: null };
-	const particulas = [];
-	const QUANTIDADE = 80;
-	const DISTANCIA = 120;
+	</div>
 
-	function ajustar() {
-		w = canvas.width = window.innerWidth;
-		h = canvas.height = window.innerHeight;
-	}
-	window.addEventListener("resize", ajustar);
-	window.addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-	window.addEventListener("mouseout", () => { mouse.x = null; mouse.y = null; });
-	ajustar();
+	<script>
+	(function () {
+		var mensagens = [
+			"Bem-vindo(a)!",
+			"100% quadradinho!",
+			"Cuidado com o Creeper!",
+			"Hssss...",
+			"Pegue sua picareta!",
+			"Tem diamante aí?",
+			"Não cave para baixo!",
+			"Tudo é feito de cubos!",
+			"Faça login, aventureiro!",
+			"Sem lag!",
+			"Cavando fundo!",
+			"Craftando acesso!",
+			"Boa sorte na mina!",
+			"Estude bastante!",
+			"Hoje é dia de aula!",
+			"Já plantou hoje?",
+			"Cuidado com a lava!",
+			"Bom jogo!"
+		];
 
-	for (let i = 0; i < QUANTIDADE; i++) {
-		particulas.push({
-			x: Math.random() * w,
-			y: Math.random() * h,
-			vx: (Math.random() - 0.5) * 0.6,
-			vy: (Math.random() - 0.5) * 0.6,
-			r: Math.random() * 2 + 1
-		});
-	}
+		var el = document.getElementById("splash");
+		var ultima = null;
 
-	function animar() {
-		ctx.clearRect(0, 0, w, h);
+		try { ultima = localStorage.getItem("splashUltima"); } catch (e) {}
 
-		for (const p of particulas) {
-			p.x += p.vx;
-			p.y += p.vy;
-			if (p.x < 0 || p.x > w) p.vx *= -1;
-			if (p.y < 0 || p.y > h) p.vy *= -1;
+		var escolha;
+		do {
+			escolha = mensagens[Math.floor(Math.random() * mensagens.length)];
+		} while (escolha === ultima && mensagens.length > 1);
 
-			ctx.beginPath();
-			ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-			ctx.fillStyle = "rgba(255,255,255,0.8)";
-			ctx.fill();
-		}
+		el.textContent = escolha;
 
-		// linhas entre partículas próximas (e o mouse)
-		const pontos = mouse.x === null ? particulas : particulas.concat([mouse]);
-		for (let i = 0; i < pontos.length; i++) {
-			for (let j = i + 1; j < pontos.length; j++) {
-				const dx = pontos[i].x - pontos[j].x;
-				const dy = pontos[i].y - pontos[j].y;
-				const d = Math.sqrt(dx * dx + dy * dy);
-				if (d < DISTANCIA) {
-					ctx.beginPath();
-					ctx.moveTo(pontos[i].x, pontos[i].y);
-					ctx.lineTo(pontos[j].x, pontos[j].y);
-					ctx.strokeStyle = "rgba(255,255,255," + (1 - d / DISTANCIA) * 0.4 + ")";
-					ctx.lineWidth = 1;
-					ctx.stroke();
-				}
-			}
-		}
-		requestAnimationFrame(animar);
-	}
-	animar();
-})();
-</script>
+		try { localStorage.setItem("splashUltima", escolha); } catch (e) {}
+	})();
+	</script>
+
+</body>
 
 </html>
